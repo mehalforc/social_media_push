@@ -34,11 +34,10 @@ function social_media_push_drupal_mail($from = 'default_from', $to, $subject, $m
 			'From' => $from, 
 			'Sender' => $from, 
 			'Return-Path' => $from,
-			'Content-Type' => 'text/html; charset=UTF-8; format=flowed',
 		),
 	);
 	$system = drupal_mail_system($my_module, $my_mail_token);
-	//$message = $system->format($message);
+	$message = $system->format($message);
 	if ($system->mail($message)) {
 		return TRUE;
 	}
