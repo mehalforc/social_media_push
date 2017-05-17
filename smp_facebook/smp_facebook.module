@@ -25,14 +25,18 @@ function product_form($node, $form_state) {
  * Detects when an Social Media Push Article is published or not.
  */
 function smp_facebook_node_update($node) {
-  if ($node->type == 'smp_article') {
-    // Act on the unpublishing of an smp_article.
-    if ($node->original->status == 1 && $node->status == 0) {
-      // Do something here.
-    }
-    // Act on the publishing of an smp_article.
-    if ($node->original->status == 0 && $node->status == 1) {
-      // Do something here.
-    }
-  }
+	if ($node->type == 'smp_article') {
+		// Act on the unpublishing of an smp_article.
+		if ($node->original->status == 1 && $node->status == 0) {
+			// Do something here.
+		}
+		// Act on the publishing of an smp_article.
+		if ($node->original->status == 0 && $node->status == 1) {
+			// Do something here.
+			$terms = social_media_push_get_terms($node)
+			if ((count($terms) > 0) && (in_array("Facebook", $terms)) {
+				// Process node to Social Media
+			}
+		}
+	}
 }
