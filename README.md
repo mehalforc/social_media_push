@@ -4,7 +4,7 @@ The First module is required by the sub-modules. When the sub-modules are
 configured, they push a content type's information (title, subject, images, links)
 to the respective Social Media provider.
 
-You will need to provide the API information to make the connection
+You will need to provide the API information to make the connection.
 
 This module comes with the following sub-modules:
 
@@ -16,7 +16,8 @@ This module comes with the following sub-modules:
   * smp_snapchat
   * smp_twitter
 
-NOTE: Not all sub-modules post content yet, still in the developement stages.
+## NOTE:
+Not all sub-modules post content yet, still in the developement stages.
 
 ## Installation
 
