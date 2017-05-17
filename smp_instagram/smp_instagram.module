@@ -20,3 +20,19 @@ function productcustomtype_node_info() {
 function product_form($node, $form_state) {
     return node_content_form($node, $form_state);
 }
+
+/**
+ * Detects when an Social Media Push Article is published or not.
+ */
+function smp_instagram_node_update($node) {
+  if ($node->type == 'smp_article') {
+    // Act on the unpublishing of an smp_article.
+    if ($node->original->status == 1 && $node->status == 0) {
+      // Do something here.
+    }
+    // Act on the publishing of an smp_article.
+    if ($node->original->status == 0 && $node->status == 1) {
+      // Do something here.
+    }
+  }
+}
