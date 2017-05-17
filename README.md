@@ -1,4 +1,4 @@
-# Social Media Push: A Drupal 7 Module for pushing Content out to Social Media.
+# Social Media Push: A Drupal 7 Module for pushing content out to Social Media.
 
 The First module is required by the sub-modules. When the sub-modules are
 configured, they push a content type information (title, subject, images, links)
