@@ -1,14 +1,48 @@
 <?php
 
+/**
+ * Get terms from a node.
+ */
 function social_media_push_get_terms($node) {
-  $terms = array();
+	$terms = array();
+	foreach (field_info_instances('node', $node->type) as $fieldname => $info) {
+		foreach (field_get_items('node', $node, $fieldname) as $item) {
+			if (is_array($item) && !empty($item['tid']) && $term = taxonomy_term_load($item['tid'])) {
+				$terms[] = $term->name;
+			}
+		}
+	}
+	return $terms;
+}
 
-  foreach (field_info_instances('node', $node->type) as $fieldname => $info) {
-    foreach (field_get_items('node', $node, $fieldname) as $item) {
-      if (is_array($item) && !empty($item['tid']) && $term = taxonomy_term_load($item['tid'])) {
-        $terms[] = $term->name;
-      }
-    }
-  }
-  return $terms;
+/**
+ * Simple wrapper function for drupal_mail() to avoid extraneous code.
+ */
+function social_media_push_drupal_mail($from = 'default_from', $to, $subject, $message) {
+	$my_module = 'custom';
+	$my_mail_token = microtime();
+	if ($from == 'default_from') {
+		// Change this to your own default 'from' email address.
+		$from = variable_get('system_mail', 'My Email Address <example@example.com>');
+	}
+	$message = array(
+		'id' => $my_module . '_' . $my_mail_token,
+		'to' => $to,
+		'subject' => $subject,
+		'body' => array($message),
+		'headers' => array(
+			'From' => $from, 
+			'Sender' => $from, 
+			'Return-Path' => $from,
+			'Content-Type' => 'text/html; charset=UTF-8; format=flowed',
+		),
+	);
+	$system = drupal_mail_system($my_module, $my_mail_token);
+	//$message = $system->format($message);
+	if ($system->mail($message)) {
+		return TRUE;
+	}
+	else {
+		return FALSE;
+	}
 }

@@ -26,6 +26,9 @@ function product_form($node, $form_state) {
  * Detects when an Social Media Push Article is published or not.
  */
 function smp_facebook_node_update($node) {
+	
+	$smp_term = "Facebook";
+	
 	if ($node->type == 'smp_article') {
 		// Act on the unpublishing of an smp_article.
 		if ($node->original->status == 1 && $node->status == 0) {
@@ -35,8 +38,28 @@ function smp_facebook_node_update($node) {
 		if ($node->original->status == 0 && $node->status == 1) {
 			// Do something here.
 			$terms = social_media_push_get_terms($node)
-			if ((count($terms) > 0) && (in_array("Facebook", $terms)) {
+			if ((count($terms) > 0) && (in_array($smp_term, $terms)) {
 				// Process node to Social Media
+				
+				$subject = "email for " . $smp_term;
+				
+				$title = $node->title
+				$body = $system->format($node->field_smp_body['und']['0']['value']);
+				$file = file_load($node->field_smp_photo['und'][0]['fid']);
+				$photo = file_create_url($file->uri);
+				$capption = $node->field_smp_caption['und']['0']['value'];
+				$link = $node->field_smp_link['und']['0']['value'];
+				
+				$email_body = "";
+				$email_body .= "Title:\n".$title."\n\n";
+				$email_body .= "Body:\n".$body."\n\n";
+				$email_body .= "Image URL:\n".$photo."\n\n";
+				$email_body .= "Capption:\n".$capption."\n\n";
+				$email_body .= "Link:\n".$link."\n\n";
+				
+				// Send email
+				$site_email = variable_get('site_mail', '');
+				social_media_push_drupal_mail($site_email, $site_email, $subject, $email_body);
 			}
 		}
 	}
