@@ -1,17 +1,1 @@
 <?php
-
-/**
- * Detects when an Social Media Push Article is published or not.
- */
-function social_media_push_node_update($node) {
-  if ($node->type == 'smp_article') {
-    // Act on the unpublishing of an smp_article.
-    if ($node->original->status == 1 && $node->status == 0) {
-      // Do something here.
-    }
-    // Act on the publishing of an smp_article.
-    if ($node->original->status == 0 && $node->status == 1) {
-      // Do something here.
-    }
-  }
-}
