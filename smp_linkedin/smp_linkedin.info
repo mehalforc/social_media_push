@@ -1,0 +1,10 @@
+name = SMP - LinkedIn
+description = Social Media Push for LinkedIn.
+package = Social Media Push
+core = 7.x
+version = 7.x-1.1-dev
+
+files[] = smp_linkedin.install
+files[] = smp_linkedin.module
+dependencies[] = drupal:taxonomy
+dependencies[] = Social Media Push

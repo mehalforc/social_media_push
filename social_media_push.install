@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * Creates Vocabulary for Social Media Push.
+ */
+$new_vocab = (object) array(
+    'name' => 'Social Media Push Vocabulary',
+    'description' => 'This vocabulary is for Social Media Push to use',
+    'machine_name' => 'smp_custom_vocab',
+ );  
+taxonomy_vocabulary_save($new_vocab);
+
+/**
+ * Implements hook_uninstall().
+ */
+function social_media_push_uninstall() {
+//  $vocab = taxonomy_vocabulary_machine_name_load('smp_custom_vocab');
+//  taxonomy_vocabulary_delete($vocab->vid);
+
+}

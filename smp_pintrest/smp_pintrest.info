@@ -1,0 +1,10 @@
+name = SMP - Pintrest
+description = Social Media Push for Pintrest.
+package = Social Media Push
+core = 7.x
+version = 7.x-1.1-dev
+
+files[] = smp_pintrest.install
+files[] = smp_pintrest.module
+dependencies[] = drupal:taxonomy
+dependencies[] = Social Media Push

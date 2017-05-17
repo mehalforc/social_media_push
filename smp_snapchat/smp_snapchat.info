@@ -1,0 +1,10 @@
+name = SMP - SnapChat
+description = Social Media Push for SnapChat.
+package = Social Media Push
+core = 7.x
+version = 7.x-1.1-dev
+
+files[] = smp_snapchat.install
+files[] = smp_snapchat.module
+dependencies[] = drupal:taxonomy
+dependencies[] = Social Media Push

@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * Creates Terms inside Vocabulary for Social Media.
+ */
+$vocab = taxonomy_vocabulary_machine_name_load('smp_custom_vocab');
+
+$term1 = (object) array(
+ 'name' => 'LinkedIn',
+ 'description' => 'This is so we can tag LinkedIn terms',
+ 'vid' => $vocab->vid,
+);
+ 
+taxonomy_term_save($term1);
