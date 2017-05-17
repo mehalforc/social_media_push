@@ -7,4 +7,4 @@ version = 7.x-1.1-dev
 files[] = smp_linkedin.install
 files[] = smp_linkedin.module
 dependencies[] = drupal:taxonomy
-dependencies[] = Social Media Push
+dependencies[] = SMP

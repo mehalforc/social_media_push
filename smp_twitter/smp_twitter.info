@@ -7,4 +7,4 @@ version = 7.x-1.1-dev
 files[] = smp_twitter.install
 files[] = smp_twitter.module
 dependencies[] = drupal:taxonomy
-dependencies[] = Social Media Push
+dependencies[] = SMP

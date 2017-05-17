@@ -1,8 +1,7 @@
-name = Social Media Push
-description = A collection 
+name = SMP
+description = A collection of Social Media Posting services
 package = Social Media Push
 core = 7.x
-files[] = social_media_push.inc
 files[] = social_media_push.install
 files[] = social_media_push.module
 dependencies[] = drupal:taxonomy
